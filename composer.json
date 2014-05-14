@@ -1,0 +1,14 @@
+{
+    "name": "nuevebit/concrete5-installer-plugin",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {"nuevebit\\Composer": "src/"}
+    },
+    "extra": {
+        "class": "nuevebit\\Composer\\Concrete5InstallerPlugin"
+    },
+    "require": {
+        "composer-plugin-api": "1.0.0"
+    }
+}

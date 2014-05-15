@@ -17,7 +17,7 @@ use Composer\Plugin\PluginInterface;
  *
  * @author emerino
  */
-class Concrete5InstallerPlugin extends PluginInterface {
+class Concrete5InstallerPlugin implements PluginInterface {
 
     public function activate(Composer $composer, IOInterface $io) {
         $installer = new Concrete5Installer($io, $composer);

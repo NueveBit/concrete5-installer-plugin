@@ -43,7 +43,8 @@ class Concrete5Installer extends LibraryInstaller {
      * {@inheritDoc}
      */
     public function supports($packageType) {
-        return 'concrete5-installer' === $packageType;
+        return 'concrete5-installer' === $packageType 
+                || 'concrete5-update' === $packageType;
     }
 
 }

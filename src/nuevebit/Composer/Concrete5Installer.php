@@ -13,7 +13,8 @@ use Composer\Installer\LibraryInstaller;
 use Composer\Util\FileSystem;
 
 /**
- * Description of Concrete5Installer
+ * Custom installer for Concrete5. Extracts only the concrete/ folder from
+ * a concrete5 zip distribution to a predefined folder.
  *
  * @author emerino
  */
@@ -21,12 +22,15 @@ class Concrete5Installer extends LibraryInstaller {
 
     /**
      * {@inheritDoc}
+     * 
+     * TODO: Install path should not be static
      */
     public function getInstallPath(PackageInterface $package) {
         return 'src/www/concrete';
     }
 
     protected function installCode(PackageInterface $package) {
+        // download and extract to a temp dir, we only need the concrete/ folder
         $tmpPath = tempnam(sys_get_temp_dir(), 'concrete5');
         if (file_exists($tmpPath)) {
             unlink($tmpPath);
@@ -37,6 +41,8 @@ class Concrete5Installer extends LibraryInstaller {
         $targetPath = $this->getInstallPath($package);
         $fs = new FileSystem();
         $fs->rename($tmpPath . DIRECTORY_SEPARATOR . "concrete", $targetPath);
+
+        // TOOD: should we remove from tmp?
     }
 
     /**

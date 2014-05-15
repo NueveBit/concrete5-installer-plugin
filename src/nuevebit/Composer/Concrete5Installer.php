@@ -28,6 +28,7 @@ class Concrete5Installer extends LibraryInstaller {
 
     protected function installCode(PackageInterface $package) {
         $tmpPath = tempnam(sys_get_temp_dir(), 'concrete5');
+        mkdir($tmpPath);
         $this->downloadManager->download($package, $tmpPath);
         
         $targetPath = $this->getInstallPath($package);
